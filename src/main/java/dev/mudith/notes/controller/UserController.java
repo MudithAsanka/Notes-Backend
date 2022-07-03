@@ -19,11 +19,13 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
+    /* Get All Users */
     @GetMapping("/user")
     public ResponseEntity<List<User>> getAllUsers(){
         return ResponseEntity.ok(this.userRepository.findAll());
     }
 
+    /* Create User */
     @PostMapping("/user")
     public ResponseEntity<User> createUser(@RequestBody UserRequest userRequest){
 
@@ -40,6 +42,7 @@ public class UserController {
         return ResponseEntity.status(201).body(this.userRepository.save(user));
     }
 
+    /* Get a User by ID */
     @GetMapping("/user/{userId}")
     public ResponseEntity getUserById(@PathVariable String userId){
 
@@ -52,6 +55,7 @@ public class UserController {
         }
     }
 
+    /* Update a User */
     @PutMapping("/user/{userId}")
     public ResponseEntity<User> updateUser(@RequestBody UserRequest userRequest, @PathVariable String userId){
 
@@ -75,6 +79,7 @@ public class UserController {
 
     }
 
+    /* Delete a User */
     @DeleteMapping("/user/{userId}")
     public ResponseEntity deleteUserById(@PathVariable String userId){
 
